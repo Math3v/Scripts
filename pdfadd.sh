@@ -1,16 +1,36 @@
 #!/bin/bash
+# Extract slide from pdf and add it to another
 
+SRC=$1			# Source pdf file
+NUM=$2			# NO. of slide to extract
+DST=$3			# Destination pdf file
 
-#set -x
+TMP1="tmp.pdf"
+TMP2="tmp2.pdf"
 
-FROMF=$1
-WHICH=$2
-RESULT=$3
+if [[ "$#" -ne 3 ]];
+then
+  echo "Usage: $0 <source-pdf-file> <which-slide> <destination-pdf-file>"
+  echo "$0 (C) Matej Minarik"
+  exit 0
+fi
 
-pdftk A=$FROMF cat A$WHICH output tmp.pdf
+which pdftk
+if [[ $? != 0 ]];
+then
+  echo "Error: pdftk is not installed"
+  exit 1
+fi
 
-pdfunite $RESULT tmp.pdf tmp2.pdf
+which pdfunite
+if [[ $? != 0 ]];
+then
+  echo "Error: pdfunite is not installed"
+  exit 1
+fi
 
-mv tmp2.pdf $RESULT
+pdftk A=$SRC cat A$NUM output $TMP1
+pdfunite $DST $TMP1 $TMP2
 
-rm tmp.pdf
+mv $TMP2 $DST
+rm $TMP1
