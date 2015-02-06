@@ -1,14 +1,21 @@
 #!/bin/bash
-# Script to run wifi
-# Moved to crontab -e
+# Script to connect to specific wireless network
 # Run as root
+# THIS SCRIPT IS NOT TESTED!
 
-echo "Waiting ..."
-#sleep 15
-echo "Connecting ..."
+# Uncomment to debug
+#set -x
 
-/sbin/iwconfig wlan0 essid "WifiSiet"
-/sbin/dhclient wlan0
+echo "Connecting to $1 ..."
+
+if [ -x /sbin/iwconfig ]
+then
+  /sbin/iwconfig wlan0 essid $1
+fi
+
+if [ -x /sbin/dhclient ]
+then
+  /sbin/dhclient wlan0
+fi
 
 echo "Exiting ..."
-exit 0

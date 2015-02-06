@@ -40,11 +40,11 @@ LOG_FILES=( `find $DIRECTORY -maxdepth $DEPTH -name \"*$SUFFIX_TO_SEARCH\"` )
 for FILE in ${LOG_FILES[@]};
 do
 	echo "$TIME Proccessing '$FILE' with '`wc -l $FILE`' lines" >> $LOGFILE
-	#if [ `wc -l $FILE` -gt $NO_OF_LINES_TO_PROCESS_FILE ];
-	#then
-#		mv $FILE $FILE.old
-#		tail -n $NO_OF_LINES_TO_KEEP > $FILE
-#		rm $FILE.old
-#	fi
+	if [ `wc -l $FILE` -gt $NO_OF_LINES_TO_PROCESS_FILE ];
+	then
+		mv $FILE $FILE.old
+		tail -n $NO_OF_LINES_TO_KEEP $FILE.old > $FILE
+		rm $FILE.old
+	fi
 done
 

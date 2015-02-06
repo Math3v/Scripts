@@ -1,4 +1,6 @@
 #!/bin/bash
+# Adjust mouse sensitivity
+# Author: Matej Minarik
 #xinput --list --short
 #xinput --list-props
 

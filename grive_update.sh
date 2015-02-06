@@ -2,10 +2,8 @@
 # Script to update grive folder
 # Matej Minarik
 
-# set -x 
-
-# While X server and internet connection start successfully
-sleep 45
+# Uncomment to debug
+#set -x 
 
 GRIVE_FOLDER=/home/matej/grive
 LOGFILE=/home/matej/.log/grive.log

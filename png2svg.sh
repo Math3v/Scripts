@@ -1,4 +1,6 @@
 #!/bin/bash
+# Script to convert .png file to .svg file
+# Author: Matej Minarik
 
 if [ "$1" == "" ]; then
   echo Usage: $0 pngfile

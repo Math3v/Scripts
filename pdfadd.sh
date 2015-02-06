@@ -1,5 +1,6 @@
 #!/bin/bash
 # Extract slide from pdf and add it to another
+# Author: Matej Minarik
 
 SRC=$1			# Source pdf file
 NUM=$2			# NO. of slide to extract

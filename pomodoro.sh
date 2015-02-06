@@ -1,4 +1,6 @@
 #!/bin/bash
+# Pomodoro on Ubuntu Linux
+# Author: Matej Minarik
 
 while true;
 do
